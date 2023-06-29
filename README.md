@@ -1,12 +1,18 @@
-![palenight.vim][screenshot]
+<!-- ![palenight.vim][screenshot] -->
 
 A dark color scheme for Vim/Neovim based off the [Material Pale Night][materialLink] color scheme. Much of the work is based on the lovely [onedark.vim][onedark] color scheme.
 
+This is a form from the palenight.vim theme, with some extras:
+
+- Support for no-background (for awesome transparent terminals)
+- Better support for Typescript, Javascript, JSX
+
 ## Installation
+
 Using [vim-plug][vimplug] (modify this to work with your Vim package manager of choice):
 
 ```vim
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'codeams/clearnight.vim'
 ```
 
 ## Usage
@@ -15,19 +21,7 @@ In your wonderfully organized Vim (`~/.vimrc`) or Neovim (`.config/nvim/init.vim
 
 ```vim
 set background=dark
-colorscheme palenight
-```
-
-To configure lightline, add the following line:
-
-```vim
-let g:lightline = { 'colorscheme': 'palenight' }
-```
-
-To configure airline, add the following line:
-
-```vim
-let g:airline_theme = "palenight"
+colorscheme clearnight
 ```
 
 ### True Colors
@@ -60,20 +54,17 @@ let g:palenight_terminal_italics=1
 ### Overriding Colors
 
 Overriding palenight's colors are supported through setting the
-`g:palenight_color_overrides` variable.  See [palenight.vim](./autoload/palenight.vim)
-for a list of colors that may be overriden.  You must provide `gui`, `cterm`,
+`g:palenight_color_overrides` variable. See [palenight.vim](./autoload/palenight.vim)
+for a list of colors that may be overriden. You must provide `gui`, `cterm`,
 and `cterm16` values for each.
 
 Example: Overriding the background color to pure black
+
 ```vim
 let g:palenight_color_overrides = {
 \    'black': { 'gui': '#000000', "cterm": "0", "cterm16": "0" },
 \}
 ```
-
-## Contributors
-
-[The lovely people that have contributed to palenight.vim](https://github.com/drewtempelmeyer/palenight.vim/graphs/contributors)
 
 [screenshot]: images/screenshot.png
 [materialLink]: https://github.com/equinusocio/material-theme
