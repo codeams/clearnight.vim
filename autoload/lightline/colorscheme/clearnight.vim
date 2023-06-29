@@ -42,7 +42,7 @@ let s:p.tabline.right   = [ [ s:p_black, s:p_yellow ] ]
 let s:p.tabline.middle  = [ [ s:p_black, s:p_menu_grey ] ]
 let s:p.tabline.tabsel  = copy(s:p.tabline.right)
 
-let s:p.inactive.left   = [ [ s:p_menu_grey, s:p_none ], [ s:p_menu_grey, s:p_none ] ]
+let s:p.inactive.left   = [ [ s:p_comment_grey, s:p_none ], [ s:p_comment_grey, s:p_none ] ]
 let s:p.inactive.right  = copy(s:p.inactive.left)
 let s:p.inactive.middle = copy(s:p.normal.middle)
 
