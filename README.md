@@ -1,15 +1,17 @@
 <!-- ![palenight.vim][screenshot] -->
 
-A dark color scheme for Vim/Neovim based off the [Material Pale Night][materialLink] color scheme. Much of the work is based on the lovely [onedark.vim][onedark] color scheme.
+BG=NONE theme for Vim/NeoVim.
 
-This is a form from the palenight.vim theme, with some extras:
+Clearnight is a fork of the [palenight.vim][vimplug] theme, with some key differences:
 
-- Support for no-background (for awesome transparent terminals)
+- Support for "no background", for beautiful transparent terminals
 - Better support for Typescript, Javascript, JSX
+- Heavier use of italics
+- Italics are now opt-out instead of opt-in
 
 ## Installation
 
-Using [vim-plug][vimplug] (modify this to work with your Vim package manager of choice):
+Using [vim-plug][vimplug]:
 
 ```vim
 Plug 'codeams/clearnight.vim'
@@ -17,16 +19,11 @@ Plug 'codeams/clearnight.vim'
 
 ## Usage
 
-In your wonderfully organized Vim (`~/.vimrc`) or Neovim (`.config/nvim/init.vim`) configuration, place the following two lines:
-
 ```vim
-set background=dark
 colorscheme clearnight
 ```
 
 ### True Colors
-
-To provide the best user experience possible, I recommend enabling true colors. To experience the blissfulness of your editor's true colors, place this in your `.vimrc` or `~/.config/nvim/init.vim` file:
 
 ```vim
 if (has("nvim"))
@@ -44,30 +41,13 @@ endif
 
 ### Italics
 
-Italics are a fantastic way to improve the appearance of your code. Italics will do what they can, but, as they say, "you can't polish a 💩." (Although MythBusters busted this). Digressing here, so place this into your config:
+If your terminal can't handle italics, turn them off
 
 ```vim
-" Italics for my favorite color scheme
-let g:palenight_terminal_italics=1
-```
-
-### Overriding Colors
-
-Overriding palenight's colors are supported through setting the
-`g:palenight_color_overrides` variable. See [palenight.vim](./autoload/palenight.vim)
-for a list of colors that may be overriden. You must provide `gui`, `cterm`,
-and `cterm16` values for each.
-
-Example: Overriding the background color to pure black
-
-```vim
-let g:palenight_color_overrides = {
-\    'black': { 'gui': '#000000', "cterm": "0", "cterm16": "0" },
-\}
+let g:clearnight_terminal_italics=0
 ```
 
 [screenshot]: images/screenshot.png
 [materialLink]: https://github.com/equinusocio/material-theme
 [onedark]: https://github.com/joshdick/onedark.vim
 [vimplug]: https://github.com/junegunn/vim-plug
-[firaCode]: https://github.com/tonsky/FiraCode
