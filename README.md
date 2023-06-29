@@ -1,4 +1,4 @@
-<!-- ![palenight.vim][screenshot] -->
+![palenight.vim][preview]
 
 BG=NONE theme for Vim/NeoVim.
 
@@ -47,7 +47,7 @@ If your terminal can't handle italics, turn them off
 let g:clearnight_terminal_italics=0
 ```
 
-[screenshot]: images/screenshot.png
+[preview]: preview.png
 [materialLink]: https://github.com/equinusocio/material-theme
 [onedark]: https://github.com/joshdick/onedark.vim
 [vimplug]: https://github.com/junegunn/vim-plug
