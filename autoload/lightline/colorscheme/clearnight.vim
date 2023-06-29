@@ -1,5 +1,6 @@
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
+let s:p_none = ['#NONE', 'NONE', 'NONE']
 let s:p_vertsplit = ["#181A1F", 59, 15]
 let s:p_special_grey = ["#3B4048", 238, 15]
 let s:p_menu_grey = ["#3E4452", 237, 8]
@@ -18,31 +19,31 @@ let s:p_cyan = ["#89DDFF", 38, 6]
 let s:p_comment_grey = ["#697098", 59, 15]
 let s:p_black = ["#292D3E", 235, 0]
 
-let s:p.normal.left     = [ [ s:p_black, s:p_purple ], [ s:p_purple, s:p_menu_grey ] ]
+let s:p.normal.left     = [ [ s:p_black, s:p_purple ], [ s:p_purple, s:p_none ] ]
 let s:p.normal.right    = copy(s:p.normal.left)
-let s:p.normal.middle   = [ [ s:p_comment_grey, s:p_black ] ]
+let s:p.normal.middle   = [ [ s:p_none, s:p_none ] ]
 let s:p.normal.warning  = [ [ s:p_black, s:p_yellow ] ]
 let s:p.normal.error    = [ [ s:p_black, s:p_red ] ]
 
-let s:p.insert.left     = [ [ s:p_black, s:p_blue ], [ s:p_blue, s:p_menu_grey ] ]
+let s:p.insert.left     = [ [ s:p_black, s:p_light_red ], [ s:p_light_red, s:p_none ] ]
 let s:p.insert.right    = copy(s:p.insert.left)
 let s:p.insert.middle   = copy(s:p.normal.middle)
 
-let s:p.visual.left     = [ [ s:p_black, s:p_cyan ], [ s:p_cyan, s:p_menu_grey ] ]
+let s:p.visual.left     = [ [ s:p_black, s:p_cyan ], [ s:p_cyan, s:p_none ] ]
 let s:p.visual.right    = copy(s:p.visual.left)
 let s:p.visual.middle   = copy(s:p.normal.middle)
 
-let s:p.replace.left    = [ [ s:p_black, s:p_green ], [ s:p_green, s:p_menu_grey ] ]
+let s:p.replace.left    = [ [ s:p_black, s:p_green ], [ s:p_green, s:p_none ] ]
 let s:p.replace.right   = copy(s:p.replace.left)
 let s:p.replace.middle  = copy(s:p.normal.middle)
 
-let s:p.tabline.left    = [ [ s:p_yellow, s:p_menu_grey ] ]
+let s:p.tabline.left    = [ [ s:p_yellow, s:p_none ] ]
 let s:p.tabline.right   = [ [ s:p_black, s:p_yellow ] ]
 let s:p.tabline.middle  = [ [ s:p_black, s:p_menu_grey ] ]
 let s:p.tabline.tabsel  = copy(s:p.tabline.right)
 
-let s:p.inactive.left   = [ [ s:p_black, s:p_menu_grey ], [ s:p_black, s:p_menu_grey ] ]
+let s:p.inactive.left   = [ [ s:p_menu_grey, s:p_none ], [ s:p_menu_grey, s:p_none ] ]
 let s:p.inactive.right  = copy(s:p.inactive.left)
-let s:p.inactive.middle = [ [ s:p_black, s:p_menu_grey ] ]
+let s:p.inactive.middle = copy(s:p.normal.middle)
 
-let g:lightline#colorscheme#palenight#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#clearnight#palette = lightline#colorscheme#flatten(s:p)
