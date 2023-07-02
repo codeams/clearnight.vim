@@ -27,9 +27,8 @@ if !exists("g:clearnight_termcolors")
   let g:clearnight_termcolors = 256
 endif
 
-" Not all terminals support italics properly. If yours does, opt-in.
 if !exists("g:clearnight_terminal_italics")
-  let g:clearnight_terminal_italics = 0
+  let g:clearnight_terminal_italics = 1
 endif
 
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
@@ -107,22 +106,22 @@ call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
 call s:h("Number", { "fg": s:dark_yellow }) " a number constant: 234, 0xff
 call s:h("Boolean", { "fg": s:red }) " a boolean constant: TRUE, false
 call s:h("Float", { "fg": s:dark_yellow }) " a floating point constant: 2.3e10
-call s:h("Identifier", { "fg": s:red }) " any variable name
-call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
+call s:h("Identifier", { "fg": s:red, "gui": "italic" }) " any variable name
+call s:h("Function", { "fg": s:blue, "gui": "italic" }) " function name (also: methods for classes)
 call s:h("Statement", { "fg": s:purple }) " any statement
-call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
+call s:h("Conditional", { "fg": s:purple, "gui": "italic" }) " if, then, else, endif, switch, etc.
 call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
 call s:h("Label", { "fg": s:purple }) " case, default, etc.
 call s:h("Operator", { "fg": s:cyan }) " sizeof", "+", "*", etc.
-call s:h("Keyword", { "fg": s:red }) " any other keyword
+call s:h("Keyword", { "fg": s:red, "gui": "italic" }) " any other keyword
 call s:h("Exception", { "fg": s:purple }) " try, catch, throw
 call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
 call s:h("Include", { "fg": s:blue }) " preprocessor #include
 call s:h("Define", { "fg": s:purple }) " preprocessor #define
 call s:h("Macro", { "fg": s:purple }) " same as Define
 call s:h("PreCondit", { "fg": s:yellow }) " preprocessor #if, #else, #endif, etc.
-call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
-call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
+call s:h("Type", { "fg": s:yellow, "gui": "italic" }) " int, long, char, etc.
+call s:h("StorageClass", { "fg": s:yellow, "gui": "italic" }) " static, register, volatile, etc.
 call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
 call s:h("Typedef", { "fg": s:yellow }) " A typedef
 call s:h("Special", { "fg": s:blue }) " any special symbol
@@ -133,7 +132,7 @@ call s:h("SpecialComment", { "fg": s:comment_grey }) " special things inside a c
 call s:h("Debug", {}) " debugging statements
 call s:h("Underlined", { "gui": "underline", "cterm": "underline" }) " text that stands out, HTML links
 call s:h("Ignore", {}) " left blank, hidden
-call s:h("Error", { "fg": s:red }) " any erroneous construct
+call s:h("Error", { "fg": s:red, "gui": "italic" }) " any erroneous construct
 call s:h("Todo", { "fg": s:purple }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 " }}}
@@ -235,71 +234,80 @@ call s:h("htmlTag", { "fg": s:cyan })
 call s:h("htmlTagName", { "fg": s:red })
 
 " Coffeescript
-call s:h("coffeeExtendedOp", { "fg": s:purple })
+" call s:h("coffeeExtendedOp", { "fg": s:purple })
+
+" TypeScript
+" call s:h("typescriptReserved", { "fg": s:purple })
+" call s:h("typescriptEndColons", { "fg": s:white })
+" call s:h("typescriptBraces", { "fg": s:white })
+" call s:h("typescriptComment", { "fg": s:purple, "gui": "italic" })
+" call s:h("typescriptLineComment", { "fg": s:purple, "gui": "italic" })
+" call s:h("typescriptIdentifierName", { "fg": s:yellow })
+call s:h("typescriptReserved", { "fg": s:purple })
 
 " JavaScript
-call s:h("javaScriptBraces", { "fg": s:white })
-call s:h("javaScriptFunction", { "fg": s:purple })
-call s:h("javaScriptIdentifier", { "fg": s:purple })
-call s:h("javaScriptNull", { "fg": s:dark_yellow })
-call s:h("javaScriptNumber", { "fg": s:dark_yellow })
-call s:h("javaScriptRequire", { "fg": s:cyan })
-call s:h("javaScriptReserved", { "fg": s:purple })
-" https://github.com/pangloss/vim-javascript
-call s:h("jsArrowFunction", { "fg": s:purple })
-call s:h("jsClassKeyword", { "fg": s:purple })
-call s:h("jsClassDefinition", { "fg": s:yellow })
-call s:h("jsClassMethodType", { "fg": s:purple })
-call s:h("jsClassFuncName", { "fg": s:blue })
-call s:h("jsDestructuringBlock", { "fg": s:blue })
-call s:h("jsDocParam", { "fg": s:blue })
-call s:h("jsDocTags", { "fg": s:purple })
-call s:h("jsExport", { "fg": s:purple })
-call s:h("jsExportDefault", { "fg": s:red })
-call s:h("jsExtendsKeyword", { "fg": s:purple })
-call s:h("jsConditional", { "fg": s:purple })
-call s:h("jsOperator", { "fg": s:purple })
-call s:h("jsFrom", { "fg": s:purple })
-call s:h("jsFuncArgs", { "fg": s:blue })
-call s:h("jsFuncCall", { "fg": s:blue })
-call s:h("jsFuncName", { "fg": s:blue })
-call s:h("jsObjectProp", { "fg": s:cyan })
-call s:h("jsFunction", { "fg": s:purple })
-call s:h("jsGenerator", { "fg": s:yellow })
-call s:h("jsGlobalObjects", { "fg": s:yellow })
-call s:h("jsImport", { "fg": s:purple })
-call s:h("jsModuleAs", { "fg": s:purple })
-call s:h("jsModuleWords", { "fg": s:purple })
-call s:h("jsModuleKeyword", { "fg": s:blue })
-call s:h("jsModules", { "fg": s:purple })
-call s:h("jsNull", { "fg": s:dark_yellow })
-call s:h("jsStorageClass", { "fg": s:purple })
-call s:h("jsSuper", { "fg": s:red })
-call s:h("jsTemplateBraces", { "fg": s:dark_red })
-call s:h("jsTemplateVar", { "fg": s:green })
-call s:h("jsThis", { "fg": s:red })
-call s:h("jsUndefined", { "fg": s:dark_yellow })
-" call s:h("jsVariableDef", { "fg": s:blue })
-" https://github.com/othree/yajs.vim
-call s:h("javascriptArrowFunc", { "fg": s:purple })
-call s:h("javascriptClassExtends", { "fg": s:purple })
-call s:h("javascriptClassKeyword", { "fg": s:purple })
-call s:h("javascriptDocNotation", { "fg": s:purple })
-call s:h("javascriptDocParamName", { "fg": s:blue })
-call s:h("javascriptDocTags", { "fg": s:purple })
-call s:h("javascriptEndColons", { "fg": s:white })
-call s:h("javascriptExport", { "fg": s:purple })
-call s:h("javascriptFuncArg", { "fg": s:white })
-call s:h("javascriptFuncKeyword", { "fg": s:purple })
-call s:h("javascriptIdentifier", { "fg": s:red })
-call s:h("javascriptImport", { "fg": s:purple })
-call s:h("javascriptMethodName", { "fg": s:white })
-call s:h("javascriptObjectLabel", { "fg": s:white })
-call s:h("javascriptOpSymbol", { "fg": s:cyan })
-call s:h("javascriptOpSymbols", { "fg": s:cyan })
-call s:h("javascriptPropertyName", { "fg": s:green })
-call s:h("javascriptTemplateSB", { "fg": s:dark_red })
-call s:h("javascriptVariable", { "fg": s:purple })
+" call s:h("javaScriptBraces", { "fg": s:white })
+" call s:h("javaScriptFunction", { "fg": s:purple })
+" call s:h("javaScriptIdentifier", { "fg": s:purple })
+" call s:h("javaScriptNull", { "fg": s:dark_yellow })
+" call s:h("javaScriptNumber", { "fg": s:dark_yellow })
+" call s:h("javaScriptRequire", { "fg": s:cyan })
+" call s:h("javaScriptReserved", { "fg": s:purple })
+" " https://github.com/pangloss/vim-javascript
+" call s:h("jsArrowFunction", { "fg": s:purple })
+" call s:h("jsClassKeyword", { "fg": s:purple })
+" call s:h("jsClassDefinition", { "fg": s:yellow })
+" call s:h("jsClassMethodType", { "fg": s:purple })
+" call s:h("jsClassFuncName", { "fg": s:blue })
+" call s:h("jsDestructuringBlock", { "fg": s:blue })
+" call s:h("jsDocParam", { "fg": s:blue })
+" call s:h("jsDocTags", { "fg": s:purple })
+" call s:h("jsExport", { "fg": s:purple })
+" call s:h("jsExportDefault", { "fg": s:red })
+" call s:h("jsExtendsKeyword", { "fg": s:purple })
+" call s:h("jsConditional", { "fg": s:purple })
+" call s:h("jsOperator", { "fg": s:purple })
+" call s:h("jsFrom", { "fg": s:purple })
+" call s:h("jsFuncArgs", { "fg": s:blue })
+" call s:h("jsFuncCall", { "fg": s:blue })
+" call s:h("jsFuncName", { "fg": s:blue })
+" call s:h("jsObjectProp", { "fg": s:cyan })
+" call s:h("jsFunction", { "fg": s:purple })
+" call s:h("jsGenerator", { "fg": s:yellow })
+" call s:h("jsGlobalObjects", { "fg": s:yellow })
+" call s:h("jsImport", { "fg": s:purple })
+" call s:h("jsModuleAs", { "fg": s:purple })
+" call s:h("jsModuleWords", { "fg": s:purple })
+" call s:h("jsModuleKeyword", { "fg": s:blue })
+" call s:h("jsModules", { "fg": s:purple })
+" call s:h("jsNull", { "fg": s:dark_yellow })
+" call s:h("jsStorageClass", { "fg": s:purple })
+" call s:h("jsSuper", { "fg": s:red })
+" call s:h("jsTemplateBraces", { "fg": s:dark_red })
+" call s:h("jsTemplateVar", { "fg": s:green })
+" call s:h("jsThis", { "fg": s:red })
+" call s:h("jsUndefined", { "fg": s:dark_yellow })
+" " call s:h("jsVariableDef", { "fg": s:blue })
+" " https://github.com/othree/yajs.vim
+" call s:h("javascriptArrowFunc", { "fg": s:purple })
+" call s:h("javascriptClassExtends", { "fg": s:purple })
+" call s:h("javascriptClassKeyword", { "fg": s:purple })
+" call s:h("javascriptDocNotation", { "fg": s:purple })
+" call s:h("javascriptDocParamName", { "fg": s:blue })
+" call s:h("javascriptDocTags", { "fg": s:purple })
+" call s:h("javascriptEndColons", { "fg": s:white })
+" call s:h("javascriptExport", { "fg": s:purple })
+" call s:h("javascriptFuncArg", { "fg": s:white })
+" call s:h("javascriptFuncKeyword", { "fg": s:purple })
+" call s:h("javascriptIdentifier", { "fg": s:red })
+" call s:h("javascriptImport", { "fg": s:purple })
+" call s:h("javascriptMethodName", { "fg": s:white })
+" call s:h("javascriptObjectLabel", { "fg": s:white })
+" call s:h("javascriptOpSymbol", { "fg": s:cyan })
+" call s:h("javascriptOpSymbols", { "fg": s:cyan })
+" call s:h("javascriptPropertyName", { "fg": s:green })
+" call s:h("javascriptTemplateSB", { "fg": s:dark_red })
+" call s:h("javascriptVariable", { "fg": s:purple })
 
 " JSON
 call s:h("jsonCommentError", { "fg": s:white })
@@ -423,11 +431,6 @@ call s:h("scssMixinName", { "fg": s:blue })
 call s:h("scssSelectorName", { "fg": s:yellow })
 call s:h("scssVariable", { "fg": s:dark_yellow })
 
-" TypeScript
-call s:h("typescriptReserved", { "fg": s:purple })
-call s:h("typescriptEndColons", { "fg": s:white })
-call s:h("typescriptBraces", { "fg": s:white })
-
 " XML
 call s:h("xmlAttrib", { "fg": s:yellow })
 call s:h("xmlEndTag", { "fg": s:red })
@@ -472,109 +475,79 @@ hi link GitGutterAdd    SignifySignAdd
 hi link GitGutterChange SignifySignChange
 hi link GitGutterDelete SignifySignDelete
 
-" mhinz/vim-signify
-call s:h("SignifySignAdd", { "fg": s:green })
-call s:h("SignifySignChange", { "fg": s:yellow })
-call s:h("SignifySignDelete", { "fg": s:red })
-
-" neomake/neomake
-call s:h("NeomakeWarningSign", { "fg": s:yellow })
-call s:h("NeomakeErrorSign", { "fg": s:red })
-call s:h("NeomakeInfoSign", { "fg": s:blue })
-
 " tpope/vim-fugitive
 call s:h("diffAdded", { "fg": s:green })
 call s:h("diffRemoved", { "fg": s:red })
-
-" liuchengxu/vista.vim
-call s:h("VistaBracket", { "fg": s:purple })
-call s:h("VistaChildrenNr", { "fg": s:dark_yellow })
-call s:h("VistaScope", { "fg": s:blue_purple })
-call s:h("VistaTag", { "fg": s:purple })
-call s:h("VistaPrefix", { "fg": s:blue_purple })
-call s:h("VistaParenthesis", { "fg": s:purple })
-call s:h("VistaColon", { "fg": s:cyan })
-call s:h("VistaIcon", { "fg": s:cyan })
-call s:h("VistaLineNr", { "fg": s:comment_grey })
-call s:h("VistaArgs", { "fg": s:comment_grey })
-call s:h("VistaKind", { "fg": s:comment_grey })
-call s:h("VistaScopeKind", { "fg": s:yellow })
 
 " termdebug
 call s:h("debugBreakpoint", { "fg": s:blue_purple })
 call s:h("debugPC", { "bg": s:blue_purple, "fg": s:black })
 
-" davidhalter/jedi-vim
-call s:h("jediFunction", { "bg": s:white_mask_3, "fg": s:white })
-call s:h("jediFat", { "bg": s:white_mask_3, "fg": s:blue , "gui": "bold,underline" })
-
-" nvim-treesitter
-
-if has("nvim")
-  call s:h("@annotation", { "fg": s:yellow })
-  call s:h("@attribute", { "fg": s:light_red })
-  call s:h("@boolean", { "fg": s:red, "gui": "italic" })
-  call s:h("@character", { "fg": s:green })
-  call s:h("@character.special", { "fg": s:blue_purple })
-  call s:h("@comment", { "fg": s:comment_grey })
-  call s:h("@conditional", { "fg": s:purple })
-  call s:h("@constant", { "fg": s:cyan })
-  call s:h("@constant.builtin", { "fg": s:yellow })
-  call s:h("@constant.macro", { "fg": s:dark_yellow })
-  call s:h("@constructor", { "fg": s:white })
-  call s:h("@define", { "fg": s:purple })
-  call s:h("@exception", { "fg": s:purple })
-  call s:h("@field", { "fg": s:cyan })
-  call s:h("@float", { "fg": s:dark_yellow })
-  call s:h("@function", { "fg": s:blue })
-  call s:h("@function.builtin", { "fg": s:cyan })
-  call s:h("@function.call", { "fg": s:blue })
-  call s:h("@function.macro", { "fg": s:purple, "gui": "italic" })
-  call s:h("@include", { "fg": s:blue })
-  call s:h("@keyword", { "fg": s:red, "gui": "italic" })
-  call s:h("@keyword.function", { "fg": s:blue_purple, "gui": "italic" })
-  call s:h("@keyword.operator", { "fg": s:white })
-  call s:h("@keyword.return", { "fg": s:red })
-  call s:h("@label", { "fg": s:purple })
-  call s:h("@method", { "fg": s:blue })
-  call s:h("@method.call", { "fg": s:blue })
-  call s:h("@namespace", { "fg": s:blue_purple })
-  call s:h("@number", { "fg": s:dark_yellow })
-  call s:h("@operator", { "fg": s:white })
-  call s:h("@parameter", { "fg": s:white, "gui": "italic" })
-  call s:h("@parameter.reference", { "fg": s:menu_grey })
-  call s:h("@property", { "fg": s:cyan })
-  call s:h("@punctuation.bracket", { "fg": s:white })
-  call s:h("@punctuation.delimiter", { "fg": s:white })
-  call s:h("@punctuation.special", { "fg": s:white })
-  call s:h("@repeat", { "fg": s:purple })
-  call s:h("@storageclass", { "fg": s:yellow, "gui": "italic" })
-  call s:h("@string", { "fg": s:green })
-  call s:h("@string.escape", { "fg": s:visual_grey })
-  call s:h("@string.regex", { "fg": s:white })
-  call s:h("@string.special", { "fg": s:menu_grey })
-  call s:h("@symbol", { "fg": s:red })
-  call s:h("@tag", { "fg": s:light_red })
-  call s:h("@tag.attribute", { "fg": s:green })
-  call s:h("@tag.delimiter", { "fg": s:white })
-  call s:h("@text.danger", { "fg": s:dark_yellow })
-  call s:h("@text.emphasis", { "gui": "italic" })
-  call s:h("@text.environment", { "fg": s:light_red })
-  call s:h("@text.environment.name", { "fg": s:cyan })
-  call s:h("@text.literal", { "fg": s:yellow })
-  call s:h("@text.reference", { "fg": s:cyan })
-  call s:h("@text.strike", { "gui": "strikethrough" })
-  call s:h("@text.strong", { "gui": "bold" })
-  call s:h("@text.title", { "fg": s:yellow, "gui": "bold" })
-  call s:h("@text.underline", { "gui": "underline" })
-  call s:h("@text.warning", { "fg": s:yellow })
-  call s:h("@text.todo", { "fg": s:purple })
-  call s:h("@type", { "fg": s:yellow })
-  call s:h("@type.builtin", { "fg": s:dark_yellow })
-  call s:h("@type.qualifier", { "fg": s:yellow })
-  call s:h("@variable", { "fg": s:white })
-  call s:h("@variable.builtin", { "fg": s:dark_yellow })
-endif
+" if has("nvim")
+  " call s:h("@annotation", { "fg": s:yellow })
+  " call s:h("@attribute", { "fg": s:light_red })
+  " call s:h("@boolean", { "fg": s:red, "gui": "italic" })
+  " call s:h("@character", { "fg": s:green })
+  " call s:h("@character.special", { "fg": s:blue_purple })
+  " call s:h("@comment", { "fg": s:comment_grey, "gui": "italic" })
+  " call s:h("@conditional", { "fg": s:purple, "gui": "italic" })
+  " call s:h("@constant", { "fg": s:cyan })
+  " call s:h("@constant.builtin", { "fg": s:yellow })
+  " call s:h("@constant.macro", { "fg": s:dark_yellow })
+  " call s:h("@constructor", { "fg": s:white, "gui": "italic" })
+  " call s:h("@define", { "fg": s:purple })
+  " call s:h("@exception", { "fg": s:purple })
+  " call s:h("@field", { "fg": s:cyan })
+  " call s:h("@float", { "fg": s:dark_yellow })
+  " call s:h("@function", { "fg": s:blue, "gui": "italic" })
+  " call s:h("@function.builtin", { "fg": s:cyan })
+  " call s:h("@function.call", { "fg": s:blue })
+  " call s:h("@function.macro", { "fg": s:purple, "gui": "italic" })
+  " call s:h("@include", { "fg": s:blue })
+  " call s:h("@keyword", { "fg": s:red, "gui": "italic" })
+  " call s:h("@keyword.function", { "fg": s:blue_purple, "gui": "italic" })
+  " call s:h("@keyword.operator", { "fg": s:white })
+  " call s:h("@keyword.return", { "fg": s:red, "gui": "italic" })
+  " call s:h("@label", { "fg": s:purple })
+  " call s:h("@method", { "fg": s:blue })
+  " call s:h("@method.call", { "fg": s:blue })
+  " call s:h("@namespace", { "fg": s:blue_purple })
+  " call s:h("@number", { "fg": s:dark_yellow })
+  " call s:h("@operator", { "fg": s:white })
+  " call s:h("@parameter", { "fg": s:white, "gui": "italic" })
+  " call s:h("@parameter.reference", { "fg": s:menu_grey })
+  " call s:h("@property", { "fg": s:cyan })
+  " call s:h("@punctuation.bracket", { "fg": s:white })
+  " call s:h("@punctuation.delimiter", { "fg": s:white })
+  " call s:h("@punctuation.special", { "fg": s:white })
+  " call s:h("@repeat", { "fg": s:purple })
+  " call s:h("@storageclass", { "fg": s:yellow, "gui": "italic" })
+  " call s:h("@string", { "fg": s:green })
+  " call s:h("@string.escape", { "fg": s:visual_grey })
+  " call s:h("@string.regex", { "fg": s:white })
+  " call s:h("@string.special", { "fg": s:menu_grey })
+  " call s:h("@symbol", { "fg": s:red, "gui": "italic" })
+  " call s:h("@tag", { "fg": s:light_red })
+  " call s:h("@tag.attribute", { "fg": s:green })
+  " call s:h("@tag.delimiter", { "fg": s:white })
+  " call s:h("@text.danger", { "fg": s:dark_yellow })
+  " call s:h("@text.emphasis", { "gui": "italic" })
+  " call s:h("@text.environment", { "fg": s:light_red })
+  " call s:h("@text.environment.name", { "fg": s:cyan })
+  " call s:h("@text.literal", { "fg": s:yellow })
+  " call s:h("@text.reference", { "fg": s:cyan })
+  " call s:h("@text.strike", { "gui": "strikethrough" })
+  " call s:h("@text.strong", { "gui": "bold" })
+  " call s:h("@text.title", { "fg": s:yellow, "gui": "bold" })
+  " call s:h("@text.underline", { "gui": "underline" })
+  " call s:h("@text.warning", { "fg": s:yellow })
+  " call s:h("@text.todo", { "fg": s:purple })
+  " call s:h("@type", { "fg": s:yellow, "gui": "italic" })
+  " call s:h("@type.builtin", { "fg": s:dark_yellow })
+  " call s:h("@type.qualifier", { "fg": s:yellow })
+  " call s:h("@variable", { "fg": s:white, "gui": "italic" })
+  " call s:h("@variable.builtin", { "fg": s:dark_yellow })
+" endif
 
 " }}}
 
